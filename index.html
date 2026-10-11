@@ -241,6 +241,21 @@ async function tour(){const S=[['🟢','جب پیسے آئیں تو "پیسے آ
 async function setup(){if(!D.sh.n){const n=await ask('اپنی دکان کا نام لکھیں');if(n){D.sh.n=n;D.sh.ph=await ask('دکان کا فون نمبر لکھیں')||'';save()}}if(!D.fi&&await yn('کیا کریانہ کی دکان ہے؟ عام چیزیں (چینی، چاول، آٹا...) پہلے سے ڈال دوں؟')){D.fi=['چینی','چاول','آٹا','گھی','چائے','نمک','صابن','دال','دودھ','انڈے'];save();R()}}
 const sup=()=>LS.sup?open('https://wa.me/'+num(LS.sup)):msg('مدد کا نمبر ترتیبات میں لکھیں');
 async function wipe(){if(await yn('سارا ڈیٹا مٹ جائے گا۔ کیا یقین ہے؟')){LS.removeItem('hk');location.reload()}}
+let ON=0,EXA=0,EXT;
+function bpush(){if(!ON){history.pushState({s:1},'');ON=1}}
+function bback(){const v=s=>$(s).style.display;
+if(v('#lk')=='flex'||$('#sp'))return 1;
+if(v('#dg')=='flex'){const n=$('#dn');(n||$('#dy')).onclick();return 1}
+if(v('#wz')=='flex'){const b=$('#wz').querySelectorAll('[data-i="x"],[data-k="no"]')[0];b?b.click():hz();return 1}
+if(v('#bl')=='block'){$('#bl').style.display='none';return 1}
+if(v('#md')=='flex'){cm();return 1}
+if(v('#mn')=='block'){mn(0);return 1}
+if(tab=='cd'){tab='h';SB='k';R();return 1}
+if(tab!='h'){tab='h';R();return 1}
+if(SB=='k'&&RL()=='m'&&!SM()){SB='m';R();return 1}
+return 0}
+addEventListener('popstate',()=>{ON=0;clearTimeout(EXT);if(bback()){bpush();return}EXA=1;const t=$('#ts');t.innerHTML='<span>باہر نکلنے کے لیے بیک کا بٹن دوبارہ دبائیں</span>';t.style.display='flex';clearTimeout(tmo);tmo=setTimeout(()=>t.style.display='none',2000);EXT=setTimeout(()=>{EXA=0;bpush()},2000)});
+document.addEventListener('pointerdown',()=>{if(EXA){EXA=0;clearTimeout(EXT)}bpush()},true);
 addEventListener('beforeinstallprompt',ev=>{ev.preventDefault();IP=ev});
 addEventListener('appinstalled',()=>{LS.inst=1;R()});
 function inst(){IP?IP.prompt():msg('براؤزر کے مینو (⋮) میں "Add to Home screen" / "ہوم اسکرین پر شامل کریں" چنیں۔ آئی فون میں شیئر بٹن سے۔')}
